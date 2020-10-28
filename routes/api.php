@@ -32,3 +32,4 @@ Route::middleware('auth:api')->group(function () {
 
 Route::post('/sign-up',[AuthController::class, 'signup']);
 Route::post('/login',[AuthController::class, 'login']);
+Route::post('/sms-registration-validation',[AuthController::class, 'validateSMS']);

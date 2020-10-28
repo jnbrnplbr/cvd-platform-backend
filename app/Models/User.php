@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Notifications\SMSRegistrationValidation;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -9,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\Client;
 use Laravel\Passport\HasApiTokens;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -54,6 +56,29 @@ class User extends Authenticatable
    public function findForPassport($username) {
       return $this->where('username', $username)->first();
    }
+
+
+   /**
+    *  My only allowed number for testing 
+    *
+    */
+   public function routeNotificationForNexmo($notification)
+    {
+         // return $this->phone_number; 
+         return '+639056677255';   // FREE SMS Only limited client
+    }
+
+
+
+   /**
+    *  Sends SMS Verification Code for validation of phone number
+    */
+   public function sendSMSValidation($number) {
+      $code = Str::random(6);
+      $this->send(new SMSRegistrationValidation($code));
+   }
+
+
 
 
    /**
