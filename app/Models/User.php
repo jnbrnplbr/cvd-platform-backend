@@ -62,7 +62,7 @@ class User extends Authenticatable
     */
     public function tryToAuthenticate ($request) {
 
-      $passport = Client::where('password_client',1)->first();
+      $passport = Client::find(2)->first();
 
       $data = [
          'grant_type'      => 'password',
