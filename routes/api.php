@@ -2,22 +2,46 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+use Cartalyst\Stripe\Laravel\Facades\Stripe;
+use Cartalyst\Stripe\Exception\CardErrorException;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::post('/checkout',function(Request $request) {
+   try {
+      Stripe::setApiKey(config('services.stripe.secret'));
+
+      $charge = Stripe::charges()->create([
+          'amount' => 100.00,                      
+          'currency' => 'PHP',
+          'source' => $request->stripeToken,
+          'description' => 'Description goes here',
+          'receipt_email' => 'sample@gmail.com',
+          'metadata' => [
+              'data1' => 'metadata 1',
+              'data2' => 'metadata 2',
+              'data3' => 'metadata 3',
+          ],
+      ]);
+
+      // save this info to your database
+
+      // SUCCESSFUL
+      return response()->json('Thank you! Your payment has been accepted.',200);
+   } catch (CardErrorException $e) {
+         // save info to database for failed
+         return response()->json($e,500);
+   }
+});
+
+
+
+
+
+
+
+
+
+
 
 
 Route::middleware('auth:api')->group(function () {

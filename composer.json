@@ -16,7 +16,8 @@
         "laravel/nexmo-notification-channel": "^2.4",
         "laravel/passport": "^10.0",
         "laravel/tinker": "^2.0",
-        "nexmo/laravel": "^2.3"
+        "nexmo/laravel": "^2.3",
+        "cartalyst/stripe-laravel": "^13.0"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",
