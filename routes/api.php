@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DepartmentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
@@ -37,21 +39,23 @@ Route::post('/checkout',function(Request $request) {
 
 
 
-
-
-
-
-
-
-
 Route::middleware('auth:api')->group(function () {
 
    Route::get('/user', function () {
       return auth()->user();
    });
 
+
+   
    
 });
+
+
+Route::get('/categories',[CategoryController::class,'index']);
+Route::post('/categories',[CategoryController::class, 'store']);
+
+Route::get('/departments',[DepartmentController::class,'index']);
+Route::post('/departments',[DepartmentController::class,'store']);
 
 
 Route::post('/sign-up',[AuthController::class, 'signup']);

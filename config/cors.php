@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://eventa.test'],
+    'allowed_origins' => ['http://cvd-platform.test'],
 
     'allowed_origins_patterns' => [],
 
