@@ -13,6 +13,13 @@ class Category extends Model
    protected $fillable = [ 'title', 'description','slug'];
 
 
+   // RELATIONSHIP TO OTHER TABLE
+   public function department () {
+      return $this->hasMany(Department::class);
+   }
+
+
+   // ACTIONS 
    public function getAll () {
       return CategoryResource::collection(Category::all());
    }

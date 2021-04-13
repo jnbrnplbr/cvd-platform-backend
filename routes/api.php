@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AgencyController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DepartmentController;
 use Illuminate\Http\Request;
@@ -57,6 +58,8 @@ Route::post('/categories',[CategoryController::class, 'store']);
 Route::get('/departments',[DepartmentController::class,'index']);
 Route::post('/departments',[DepartmentController::class,'store']);
 
+Route::get('/agencies',[AgencyController::class,'index']);
+Route::post('/departments',[AgencyController::class,'store']);
 
 Route::post('/sign-up',[AuthController::class, 'signup']);
 Route::post('/login',[AuthController::class, 'login']);

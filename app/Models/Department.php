@@ -13,6 +13,13 @@ class Department extends Model
     protected $fillable = [ 'name', 'description', 'slug', 'category_id'];
 
 
+    // RELATIONSHIP ON OTHER TABLE
+
+    public function category () {
+        return $this->belongsTo(Category::class);
+    }
+
+
     public function list () {
         return DepartmentResource::collection(Department::all());
     }
