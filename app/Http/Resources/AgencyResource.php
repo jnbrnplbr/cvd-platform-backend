@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class DepartmentResource extends JsonResource
+class AgencyResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,12 +17,12 @@ class DepartmentResource extends JsonResource
         return [
             'id'    => $this->id,
             'name'  => $this->name,
-            'description' => $this->description,
+            'description'   => $this->description,
             'slug'          => $this->slug,
-            'category'      => $this->category_id,
+            'department'    => $this->department->name,
             'created'       => $this->created_at->format('j F Y'),
-            'updated'       => $this->updated_at->format('j F Y'),
-            'agencies'      => AgencyResource::collection($this->agency)
+            'updated'       => $this->updated_at->format('j F Y')
         ];
+    
     }
 }

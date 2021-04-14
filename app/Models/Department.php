@@ -19,6 +19,10 @@ class Department extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function agency () {
+        return $this->hasMany(Agency::class);
+    }
+
 
     public function list () {
         return DepartmentResource::collection(Department::all());
