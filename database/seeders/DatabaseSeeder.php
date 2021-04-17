@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             CategoryTableSeeder::class,
             DepartmentTableSeeder::class,
             AgencyTableSeeder::class,
+            ReportTableSeeder::class,
         ]);
     }
 }

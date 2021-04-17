@@ -18,6 +18,10 @@ class Agency extends Model
         return $this->belongsTo(Department::class);
     }
 
+    public function report () {
+        return $this->hasMany(Report::class);
+    }
+
     // ACTIONS
 
     public function list () {

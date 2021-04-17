@@ -3,6 +3,7 @@
 use App\Http\Controllers\AgencyController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
@@ -59,7 +60,10 @@ Route::get('/departments',[DepartmentController::class,'index']);
 Route::post('/departments',[DepartmentController::class,'store']);
 
 Route::get('/agencies',[AgencyController::class,'index']);
-Route::post('/departments',[AgencyController::class,'store']);
+Route::post('/agencies',[AgencyController::class,'store']);
+
+Route::get('/reports',[ReportController::class,'index']);
+
 
 Route::post('/sign-up',[AuthController::class, 'signup']);
 Route::post('/login',[AuthController::class, 'login']);
